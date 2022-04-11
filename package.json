@@ -1,0 +1,20 @@
+{
+  "name": "babel-plugin-format-testid",
+  "version": "1.0.0",
+  "description": "A babel plugin to format testid",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "babel"
+  ],
+  "author": "mohit23x",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/types": "^7.17.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0"
+  }
+}
