@@ -42,8 +42,6 @@ module.exports = function prefixTestID(_, opts) {
       JSXAttribute(path) {
         if (path.node.name.name !== "testID" || opts?.skip || !PREFIX) return;
 
-        // console.log('it is :', path.node.value.value);
-
         let testIDValue;
         if (
           types.isExpression(path.node.value) &&
@@ -52,7 +50,6 @@ module.exports = function prefixTestID(_, opts) {
           if (!path.node.value.value.startsWith(PREFIX)) {
             testIDValue = path.node.value;
             updatePrefix(path, testIDValue);
-            // console.log('string:', path.node.value);
           }
         } else if (path.node.value.type === "JSXExpressionContainer") {
           testIDValue = path.node.value.expression;
@@ -64,7 +61,6 @@ module.exports = function prefixTestID(_, opts) {
               // eslint-disable-next-line max-depth
               if (!path.node.value.expression.left.value.startsWith(PREFIX)) {
                 updatePrefix(path, testIDValue);
-                // console.log('binary_string:', JSON.stringify(path.node.value.expression));
               }
             }
           } else if (
@@ -73,13 +69,11 @@ module.exports = function prefixTestID(_, opts) {
             )
           ) {
             updatePrefix(path, testIDValue);
-            // console.log('logical:', JSON.stringify(path.node.value.expression));
           } else if (
             path.node.value.expression.type === "Identifier" &&
             path.node.value.expression.name === "variable"
           ) {
             updatePrefix(path, testIDValue);
-            // console.log('identier:', JSON.stringify(path.node.value.expression));
           }
         }
       },
